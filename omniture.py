@@ -1,6 +1,7 @@
 import config
 import uuid
 from datetime import datetime
+import logging
 import hashlib
 import binascii
 import requests
@@ -13,7 +14,8 @@ class Omniture:
     def __init__(self):
         self.username = config.username
         self.sharedsecret = config.sharedsecret
-
+        logging.basicConfig(filename='AdobeAnalyticsDataExtraction.log', format='%(asctime)s %(levelname)s:%(message)s',
+                            datefmt='%m/%d/%Y %I:%M:%S %p', level=logging.DEBUG)
 
     @staticmethod
     def _construct_header(properties):
